@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/quynhvu1602/my-wedding/static/css/main.073c9b0a.css",
+    "main.js": "/quynhvu1602/my-wedding/static/js/main.bde32d51.js",
+    "static/js/787.f9610b1b.chunk.js": "/quynhvu1602/my-wedding/static/js/787.f9610b1b.chunk.js",
+    "static/media/logo.svg": "/quynhvu1602/my-wedding/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/quynhvu1602/my-wedding/index.html",
+    "main.073c9b0a.css.map": "/quynhvu1602/my-wedding/static/css/main.073c9b0a.css.map",
+    "main.bde32d51.js.map": "/quynhvu1602/my-wedding/static/js/main.bde32d51.js.map",
+    "787.f9610b1b.chunk.js.map": "/quynhvu1602/my-wedding/static/js/787.f9610b1b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.bde32d51.js"
+  ]
+}
