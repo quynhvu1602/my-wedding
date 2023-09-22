@@ -3,7 +3,11 @@ import T from "./assets/Untitled-2.png";
 import reception from "./assets/reception.svg";
 import rings from "./assets/rings.svg";
 import tpbankq from "./assets/tpbankq.png";
-import {ButtonScrollTop} from "./ScrollTop.tsx"
+import { ButtonScrollTop } from "./ScrollTop.tsx";
+import { useRef, useState, useEffect } from "react";
+import list from "./assets/list.svg";
+import close from "./assets/close.svg";
+
 const A = [
   { name: "home", href: "#home" },
   { name: "cô dâu & chú rể", href: "#couple" },
@@ -12,6 +16,26 @@ const A = [
   { name: "địa điểm", href: "#map" },
 ];
 function App() {
+  const [isOpen, setIsOpen] = useState(false);
+  const ref = useRef();
+
+  useEffect(() => {
+    console.log(document.fullscreenElement?.scrollHeight);
+    window.addEventListener("scroll", (e) => {
+      console.log("sticky >> ref", ref)
+      console.log("run thid", ref?.current?.offsetTop)
+      if (!ref?.current) return;
+      var sticky = ref?.current?.offsetTop;
+      console.log("sticky >>", sticky)
+      if (window.scrollY >= sticky) {
+        ref?.current?.classList.add("sticky")
+      } else {
+        ref?.current?.classList.remove("sticky");
+      }
+    });
+    return window.removeEventListener("scroll", () => {});
+  }, []);
+
   return (
     <div className="w-full relative">
       <section id="home" className="h-screen w-screen bg-blue-300 relative">
@@ -35,26 +59,57 @@ function App() {
             <p className="text-[16px]">Đông Hợp, Đông Hưng, Thái Bình</p>
           </div>
         </div>
-        {/* <img src={T} className="w-[200px] h-[100px]"/> */}
       </section>
-      <div className="w-full space-y-[100px]">
-        {/* nav */}
-        <div className=" hidden bg-[#f8f9fa] text-black h-16 w-full md:flex items-center justify-end gap-10 px-16">
-          {A.map((i, idx) => (
-            <a
-              key={idx}
-              href={i.href}
-              className="text-[rgba(0,0,0,0.5)] uppercase tracking-tighter text-[18px] !font-sans hover:opacity-80"
+      <div className="w-full static">
+        <div className="" ref={ref}>
+          {/* nav mobile */}
+          <div
+            className={`block group bg-[#f8f9fa] text-black px-4 pt-3 space-y-10 md:hidden transition-[height] ease-in-out delay-150 duration-700 ${
+              isOpen ? "h-[350px]" : "h-16"
+            }`}
+          >
+            <button
+              className="cursor-pointer w-14 h-10 bg-white border border-gray-300 flex justify-center items-center rounded-md"
+              onClick={() => setIsOpen(!isOpen)}
             >
-              {i.name}
-            </a>
-          ))}
-        </div>
+              <img src={isOpen ? close : list} alt="" className="w-6 h-6" />
+            </button>
+            <div
+              className={`transition-opacity duration-700 delay-150 ease-out flex flex-col justify-center items-start gap-6 w-full  ${
+                isOpen ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              {A.map((i, idx) => (
+                <a
+                  key={idx}
+                  href={i.href}
+                  className="text-[rgba(0,0,0,0.5)] uppercase tracking-tighter text-[18px] !font-sans hover:opacity-80"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {i.name}
+                </a>
+              ))}
+            </div>
+          </div>
 
+          {/* nav */}
+          <div className="hidden bg-[#f8f9fa] text-black h-16 w-full md:flex items-center justify-end gap-10 px-16">
+            {A.map((i, idx) => (
+              <a
+                key={idx}
+                href={i.href}
+                className="text-[rgba(0,0,0,0.5)] uppercase tracking-tighter text-[18px] !font-sans hover:opacity-80"
+                onClick={() => setIsOpen(false)}
+              >
+                {i.name}
+              </a>
+            ))}
+          </div>
+        </div>
         {/* couple */}
         <section
           id="couple"
-          className="px-4 md:px-[5rem] lg:px-[11rem] title space-y-10"
+          className="pt-[100px] px-4 md:px-[5rem] lg:px-[11rem] title space-y-10"
         >
           <p className="capitalize text-[40px] w-full text-center">
             cô dâu & chú rể
@@ -86,7 +141,7 @@ function App() {
         {/* couple option 2 */}
         <section
           id="couple"
-          className="px-4 md:px-[5rem] lg:px-[11rem] title space-y-10"
+          className="pt-[100px] px-4 md:px-[5rem] lg:px-[11rem] title space-y-10"
         >
           <p className="capitalize text-[40px] w-full text-center">
             cô dâu & chú rể
@@ -118,7 +173,7 @@ function App() {
         {/* place & events */}
         <section
           id="events"
-          className="px-4 md:px-[5rem] lg:px-[11rem] space-y-10"
+          className="pt-[100px] px-4 md:px-[5rem] lg:px-[11rem] space-y-10"
         >
           <p className="capitalize text-[40px] w-full text-center title">
             sự kiện
@@ -156,7 +211,7 @@ function App() {
         {/* gallery */}
         <section
           id="gallery"
-          className="px-4 md:px-[5rem] lg:px-[11rem] space-y-10"
+          className="pt-[100px] px-4 md:px-[5rem] lg:px-[11rem] space-y-10"
         >
           <p className="capitalize text-[40px] w-full text-center title">
             Photo Gallery
@@ -173,7 +228,7 @@ function App() {
         </section>
 
         {/* present */}
-        <section id="" className="px-4 md:px-[5rem] lg:px-[11rem] space-y-10">
+        <section id="" className="pt-[100px] px-4 md:px-[5rem] lg:px-[11rem] space-y-10">
           <p className="capitalize text-[40px] w-full text-center title">
             Hộp mừng cưới
           </p>
@@ -265,7 +320,7 @@ function App() {
         {/* map */}
         <section
           id="map"
-          className="px-4 md:px-[5rem] lg:px-[11rem] space-y-10"
+          className="pt-[100px] px-4 md:px-[5rem] lg:px-[11rem] space-y-10"
         >
           <p className="capitalize text-[40px] w-full text-center title">
             Địa điểm
@@ -284,13 +339,16 @@ function App() {
           </div>
         </section>
 
-        <div className="capitalize title text-white bg-red-200 w-full text-center p-4 lg:p-16 text-[42px] lg:text-[64px]">thank you!</div>
+        <div className="capitalize title text-white w-full text-center p-4 lg:p-16 text-[42px] lg:text-[64px]">
+          {/* thank you! */}
+        </div>
       </div>
-      <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+      <button onclick="topFunction()" id="myBtn" title="Go to top">
+        Top
+      </button>
 
-      <div  className="fixed bottom-10 z-50 bg-green-400 w-10 h-10 right-10 "
-      >
-      {/* <ButtonScrollTop/> */}
+      <div className="fixed bottom-10 z-50 right-10 w-8 h-8">
+        <ButtonScrollTop />
       </div>
     </div>
   );
