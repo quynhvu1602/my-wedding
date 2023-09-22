@@ -8,9 +8,8 @@ interface Props {
 
 export const ButtonScrollTop = ({ bottom, right }: Props) => {
   let ref = useRef<HTMLDivElement>(null);
-  
+
   useEffect(() => {
-    console.log(document.fullscreenElement?.scrollHeight);
     window.addEventListener("scroll", (e) => {
       if (!ref?.current || !ref?.current?.className) return;
       const t: string = window.scrollY > 500 ? "block" : "none";

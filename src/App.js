@@ -1,12 +1,11 @@
-import "./App.css";
-import T from "./assets/Untitled-2.png";
+import { useRef, useState, useEffect } from "react";
+import { ButtonScrollTop } from "./ScrollTop.tsx";
 import reception from "./assets/reception.svg";
 import rings from "./assets/rings.svg";
 import tpbankq from "./assets/tpbankq.png";
-import { ButtonScrollTop } from "./ScrollTop.tsx";
-import { useRef, useState, useEffect } from "react";
 import list from "./assets/list.svg";
 import close from "./assets/close.svg";
+import "./App.css";
 
 const A = [
   { name: "home", href: "#home" },
@@ -20,13 +19,9 @@ function App() {
   const ref = useRef();
 
   useEffect(() => {
-    console.log(document.fullscreenElement?.scrollHeight);
     window.addEventListener("scroll", (e) => {
-      console.log("sticky >> ref", ref)
-      console.log("run thid", ref?.current?.offsetTop)
       if (!ref?.current) return;
       var sticky = ref?.current?.offsetTop;
-      console.log("sticky >>", sticky)
       if (window.scrollY >= sticky) {
         ref?.current?.classList.add("sticky")
       } else {
