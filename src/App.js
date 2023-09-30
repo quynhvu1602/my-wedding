@@ -2,9 +2,22 @@ import { useRef, useState, useEffect } from "react";
 import { ButtonScrollTop } from "./ScrollTop.tsx";
 import reception from "./assets/reception.svg";
 import rings from "./assets/rings.svg";
-import tpbankq from "./assets/tpbankq.png";
-import list from "./assets/list.svg";
 import close from "./assets/close.svg";
+import list from "./assets/list.svg";
+import bg from "./assets/images/bg.jpg";
+import cd from "./assets/images/cd.jpg";
+import cr from "./assets/images/cr.jpg";
+import g1 from "./assets/images/1.jpg";
+import g2 from "./assets/images/2-min.jpg";
+import g3 from "./assets/images/3-min.jpg";
+import g4 from "./assets/images/4-min.jpg";
+import g5 from "./assets/images/5-min.jpg";
+import g6 from "./assets/images/6-min.jpg";
+import g7 from "./assets/images/7-min.jpg";
+import g8 from "./assets/images/8-min.jpg";
+import tech from "./assets/tech2.jpg";
+import vt from "./assets/vt2.jpg";
+
 import "./App.css";
 
 const A = [
@@ -23,7 +36,7 @@ function App() {
       if (!ref?.current) return;
       var sticky = ref?.current?.offsetTop;
       if (window.scrollY >= sticky) {
-        ref?.current?.classList.add("sticky")
+        ref?.current?.classList.add("sticky");
       } else {
         ref?.current?.classList.remove("sticky");
       }
@@ -32,13 +45,9 @@ function App() {
   }, []);
 
   return (
-    <div className="w-full relative">
-      <section id="home" className="h-screen w-screen bg-blue-300 relative">
-        <img
-          src="https://picsum.photos/seed/picsum/200/300"
-          alt="d"
-          className="w-full h-full"
-        />
+    <div className="w-full relative bg-white">
+      <section id="home" className="h-screen w-screen bg-blue-300 relative overflow-hidden">
+        <img src={bg} alt="bg" className="" />
         <div className="w-full h-full z-10 absolute top-0 left-0 flex flex-col items-center justify-end text-white space-y-8 p-4 pb-16 md:p-10 lg:p-20 title">
           <p className="text-[44px] md:text-[64px] text-center">
             Ngọc Quỳnh <br className="block md:hidden" />&
@@ -102,7 +111,7 @@ function App() {
           </div>
         </div>
         {/* couple */}
-        <section
+        {/* <section
           id="couple"
           className="pt-[100px] px-4 md:px-[5rem] lg:px-[11rem] title space-y-10"
         >
@@ -131,7 +140,7 @@ function App() {
               <p className="text-[28px]">Trần Việt Hoàn</p>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* couple option 2 */}
         <section
@@ -144,21 +153,13 @@ function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 justify-center">
             <div className="flex flex-col items-center gap-8 bg-[#f8f9fa] p-10 rounded-md">
               <div className="w-[300px] h-[400px]">
-                <img
-                  src="https://picsum.photos/id/237/200/300"
-                  alt=""
-                  className="w-full h-full"
-                />
+                <img src={cd} alt="cd" className="w-full h-full" />
               </div>
               <p className="text-[28px]">Vũ Thị Ngọc Quỳnh</p>
             </div>
             <div className="flex flex-col items-center gap-8 bg-[#f8f9fa] p-10 rounded-md">
               <div className="w-[300px] h-[400px]">
-                <img
-                  src="https://picsum.photos/id/237/200/300"
-                  alt=""
-                  className="w-full h-full"
-                />
+                <img src={cr} alt="cr" className="w-full h-full" />
               </div>
               <p className="text-[28px]">Trần Việt Hoàn</p>
             </div>
@@ -174,12 +175,17 @@ function App() {
             sự kiện
           </p>
           <div className="flex flex-col-reverse items-center md:items-start md:flex-row gap-4">
-            <div className="flex-1 lg:flex-none lg:w-[43%] p-10 border border-red-300 relative">
+            <div className="flex-1 lg:flex-none lg:w-[43%] p-10 border border-red-300 relative space-y-4">
               <div className="w-full h-full absolute border border-red-300 rotate-3 top-0 left-0" />
               <p className="text-[#f67e7d] text-[28px]">Bữa cơm thân mật</p>
+
               <p>
-                Mipec Palace, 229 Tây Sơn, Ngã Tư Sở, Đống Đa, Hà Nội 2023. 03.
-                10. FRI PM 05:30
+                <span className="text-[#f67e7d] italic">Nhà trai</span> - Thôn
+                Phong Lôi Đông, xã Đông Hợp, huyện Đông Hưng, tỉnh Thái Bình
+              </p>
+              <p>
+                <span className="text-[#f67e7d] italic">Nhà gái</span> - Thôn
+                Hồng Phong, xã Đông Quang, huyện Đông Hưng, tỉnh Thái Bình
               </p>
             </div>
             <div className="w-[120px] h-[120px] rounded-full bg-red-200 flex items-center justify-center">
@@ -196,8 +202,8 @@ function App() {
               <div className="w-full h-full absolute border border-red-300 rotate-3 top-0 left-0" />
               <p className=" text-[#f67e7d] text-[28px]">Lễ thành hôn</p>
               <p>
-                Mipec Palace, 229 Tây Sơn, Ngã Tư Sở, Đống Đa, Hà Nội 2023. 03.
-                10. FRI PM 05:30
+                Thôn Phong Lôi Đông, xã Đông Hợp, huyện Đông Hưng, tỉnh Thái
+                Bình
               </p>
             </div>
           </div>
@@ -212,101 +218,59 @@ function App() {
             Photo Gallery
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {Array(8)
-              .fill("https://picsum.photos/seed/picsum/200/300")
-              .map((i, idx) => (
-                <div key={idx} className="h-[400px]">
-                  <img className="w-full h-full" alt="" src={i} />
-                </div>
-              ))}
+            {[g1, g2, g3, g4, g5, g6, g7, g8].map((i, idx) => (
+              <div key={idx} className="h-[400px]">
+                <img className="w-full h-full" alt="" src={i} />
+              </div>
+            ))}
           </div>
         </section>
 
         {/* present */}
-        <section id="" className="pt-[100px] px-4 md:px-[5rem] lg:px-[11rem] space-y-10">
+        <section
+          id=""
+          className="pt-[100px] px-4 md:px-[5rem] lg:px-[11rem] space-y-10"
+        >
           <p className="capitalize text-[40px] w-full text-center title">
             Hộp mừng cưới
           </p>
           {/* version 1 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 justify-center">
             <div className="flex flex-col items-center bg-[#f8f9fa] rounded-md relative space-y-6">
-              <div className="w-[60px] h-[60px] -translate-y-[50%] absolute top-0">
+              {/* <div className="w-[60px] h-[60px] -translate-y-[50%] absolute top-0">
                 <img
-                  src="https://picsum.photos/id/237/200/300"
+                  src={""}
                   alt=""
                   className="w-full h-full rounded-full"
                 />
-              </div>
+              </div> */}
+
               <div className="p-4 lg:p-10 flex flex-col items-center gap-4">
                 <p className="text-[20px] font-bold mt-4">Vũ Thị Ngọc Quỳnh</p>
-                <img src={tpbankq} className="w-full" alt="" />
                 <div className="flex flex-col items-center">
                   <div className="w-full h-[1px] " />
                   <p className="italic text-gray-500">Số tài khoản</p>
                   <p>1903 5215 3400 14</p>
                 </div>
+                <img src={tech} className="w-full" alt="" />
               </div>
             </div>
             <div className="flex flex-col items-center  bg-[#f8f9fa] rounded-md relative space-y-6">
-              <div className="w-[60px] h-[60px] -translate-y-[50%] absolute top-0">
+              {/* <div className="w-[60px] h-[60px] -translate-y-[50%] absolute top-0">
                 <img
                   src="https://picsum.photos/id/237/200/300"
                   alt=""
                   className="w-full h-full rounded-full"
                 />
-              </div>
+              </div> */}
               <div className="p-4 lg:p-10 flex flex-col items-center gap-4">
-                <p className="text-[20px] font-bold mt-4">Vũ Thị Ngọc Quỳnh</p>
-                <img src={tpbankq} className="w-full" alt="" />
+                <p className="text-[20px] font-bold mt-4">Trần Việt Hoàn </p>
                 <div className="flex flex-col items-center">
                   <div className="w-full h-[1px] " />
                   <p className="italic text-gray-500">Số tài khoản</p>
-                  <p>1903 5215 3400 14</p>
+                  <p>1090 0609 6534</p>
                 </div>
-              </div>
-            </div>
-          </div>
-
-          {/* version2 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 justify-center">
-            <div className="flex flex-col items-center border border-red-300 relative ">
-              {/* <div className="w-full h-full absolute border border-red-300 rotate-3 top-0 left-0" /> */}
-              <div className="w-[60px] h-[60px] -translate-y-[50%] absolute top-0">
-                <img
-                  src="https://picsum.photos/id/237/200/300"
-                  alt=""
-                  className="w-full h-full rounded-full"
-                />
-              </div>
-              <div className="p-4 lg:p-10 flex flex-col items-center gap-4 mt-4">
-                <img src={tpbankq} className="w-full" alt="" />
-                <div className="flex flex-col items-center">
-                  <div className="w-full h-[1px] " />
-                  <p className="text-[20px] font-bold italic">
-                    Vũ Thị Ngọc Quỳnh
-                  </p>
-                  <p className="italic text-gray-500">Số tài khoản</p>
-                  <p>1903 5215 3400 14</p>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col items-center gap-4  border border-red-300 relative">
-              <div className="w-full h-full absolute border border-red-300 rotate-3 top-0 left-0" />
-              <div className="w-[60px] h-[60px] -translate-y-[50%] absolute top-0">
-                <img
-                  src="https://picsum.photos/id/237/200/300"
-                  alt=""
-                  className="w-full h-full rounded-full"
-                />
-              </div>
-              <div className="p-4 lg:p-10 flex flex-col items-center gap-4">
-                <p className="text-[20px] font-bold mt-4">Vũ Thị Ngọc Quỳnh</p>
-                <img src={tpbankq} className="w-full" alt="" />
-                <div className="flex flex-col items-center">
-                  <div className="w-full h-[1px] " />
-                  <p className="italic text-gray-500">Số tài khoản</p>
-                  <p>1903 5215 3400 14</p>
-                </div>
+                <img src={vt} className="w-full" alt="" />
               </div>
             </div>
           </div>
@@ -320,8 +284,23 @@ function App() {
           <p className="capitalize text-[40px] w-full text-center title">
             Địa điểm
           </p>
-          <div>
-            <iframe
+          <div className="flex gap-10">
+            <div  className="flex flex-col gap-4 justify-center items-center w-1/2">
+              <p>Cô dâu</p>
+              <iframe
+               title="mapdq"
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3736.8251045637103!2d106.3500405752426!3d20.513394681010077!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjDCsDMwJzQ4LjIiTiAxMDbCsDIxJzA5LjQiRQ!5e0!3m2!1sen!2s!4v1696068787581!5m2!1sen!2s"
+                width="100%"
+                height="450"
+                style={{ border: 0 }}
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+            <div className="flex flex-col gap-4 justify-center items-center w-1/2 ">
+              <p>Chú rể</p>
+              <iframe
               title="mapdh"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3736.1071023040527!2d106.35540247465954!3d20.542798304293395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135f02d583cb36f%3A0x72dba66dc029c579!2zQuG6v24geGUga2jDoWNoIMSQw7RuZyBIxrBuZw!5e0!3m2!1svi!2s!4v1695294470187!5m2!1svi!2s"
               width="100%"
@@ -331,6 +310,8 @@ function App() {
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
+            </div>
+           
           </div>
         </section>
 
