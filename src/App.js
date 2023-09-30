@@ -47,7 +47,8 @@ function App() {
   return (
     <div className="w-full relative bg-white">
       <section id="home" className="h-screen w-screen bg-blue-300 relative overflow-hidden">
-        <img src={bg} alt="bg" className="" />
+        <img src={bg} alt="bg" className="hidden lg:block overflow-hidden" />
+        <img src={g7} alt="bg" className="block lg:hidden w-full h-full " />
         <div className="w-full h-full z-10 absolute top-0 left-0 flex flex-col items-center justify-end text-white space-y-8 p-4 pb-16 md:p-10 lg:p-20 title">
           <p className="text-[44px] md:text-[64px] text-center">
             Ngọc Quỳnh <br className="block md:hidden" />&
@@ -219,7 +220,7 @@ function App() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {[g1, g2, g3, g4, g5, g6, g7, g8].map((i, idx) => (
-              <div key={idx} className="h-[400px]">
+              <div key={idx} className="">
                 <img className="w-full h-full" alt="" src={i} />
               </div>
             ))}
@@ -284,8 +285,8 @@ function App() {
           <p className="capitalize text-[40px] w-full text-center title">
             Địa điểm
           </p>
-          <div className="flex gap-10">
-            <div  className="flex flex-col gap-4 justify-center items-center w-1/2">
+          <div className="flex gap-10 flex-col lg:flex-row">
+            <div  className="flex flex-col gap-4 justify-center items-center w-full lg:w-1/2">
               <p>Cô dâu</p>
               <iframe
                title="mapdq"
@@ -298,7 +299,7 @@ function App() {
                 referrerpolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
-            <div className="flex flex-col gap-4 justify-center items-center w-1/2 ">
+            <div className="flex flex-col gap-4 justify-center items-center w-full lg:w-1/2 ">
               <p>Chú rể</p>
               <iframe
               title="mapdh"
